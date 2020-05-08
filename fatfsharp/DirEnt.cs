@@ -2,7 +2,6 @@ using System.Runtime.InteropServices;
 
 namespace fatfsharp
 {
-    [Flags]
     public enum DirAttributeFlags
     {
         READ_ONLY = 0b_0000_0001,
