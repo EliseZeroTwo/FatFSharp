@@ -10,7 +10,7 @@ namespace fatfsharp
         FATMirroring  = 0b_1000_0000,
     }
 
-    [StructLayout(LayoutKind.Sequential, Pack=1, CharSet=CharSet.Ansi, Size=0x200)]
+    [StructLayout(LayoutKind.Sequential, Pack=1, CharSet=CharSet.Ansi, Size=VolumeID.HdrSize)]
     public struct VolumeIDHdr
     {
         [MarshalAs(UnmanagedType.ByValArray, SizeConst=3)]
@@ -52,6 +52,7 @@ namespace fatfsharp
     
     public static class VolumeID
     {
+        public const ushort HdrSize = 0x200;
         public static T RawDataToObject<T>(byte[] rawData) where T : struct
         {
             var pinnedRawData = GCHandle.Alloc(rawData,

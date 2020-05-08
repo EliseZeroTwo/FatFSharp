@@ -23,6 +23,15 @@ namespace fatfsharp
             
             hdr = VolumeID.RawDataToObject<VolumeIDHdr>(hdrByteArr);
             
+            if (hdr.Magic != Fat32.Magic)
+                throw new ApplicationException($"Fat32 Magic {hdr.Magic:x} is invalid");
+            
+            if (hdr.ExtMagic != Fat32.ExtMagic)
+                throw new ApplicationException($"Fat32 Extended Magic {hdr.ExtMagic:x} is invalid");
+
+            uint firstLBA = (uint)(hdr.ReservedSectors + (VolumeID.HdrSize / hdr.BytesPerSector));
+
+
         }
 
     }
