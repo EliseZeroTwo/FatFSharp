@@ -1,4 +1,4 @@
-namespace fatfsharp
+namespace fatfsharp.StreamHelpers
 {
     public class Sectors
     {

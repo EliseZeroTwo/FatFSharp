@@ -14,7 +14,7 @@ namespace fatfsharp
         public const ushort BytesPerSector = 512; // Offset: 0x0B
         public const byte FATCount = 2; // Offset: 0x10 
 
-        public Sectors Sectors;
+        public StreamHelpers.Sectors Sectors;
 
         public Fat32(Stream _stream)
         {
@@ -31,7 +31,7 @@ namespace fatfsharp
             if (hdr.ExtMagic != Fat32.ExtMagic)
                 throw new ApplicationException($"Fat32 Extended Magic {hdr.ExtMagic:x} is invalid");
 
-            Sectors = new Sectors(this);
+            Sectors = new StreamHelpers.Sectors(this);
         }
 
     }
